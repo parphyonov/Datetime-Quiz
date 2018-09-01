@@ -25,23 +25,27 @@ class Quiz:
         print('=== THE QUIZ ===')
         # log the start time
         quiz_start = datetime.datetime.now()
-        print('You started the quiz at {}\n'.format(quiz_start.strftime(self.time_format)))
+        print('You started the quiz at {}\n'.format(
+                quiz_start.strftime(self.time_format)))
         # ask all of the questions
         for question in self.questions:
             result = self.ask(question)
             # log if they got the question right
             if result[0]:
-                print('You got this one right in {} seconds!!!\n'.format(result[1].seconds))
+                print('You got this one right in {} seconds!!!\n'.format(
+                        result[1].seconds))
         # log the end time
         quiz_end = datetime.datetime.now()
-        print('The quiz finished at {}\n'.format(quiz_end.strftime(self.time_format)))
+        print('The quiz finished at {}\n'.format(
+                quiz_end.strftime(self.time_format)))
         # show a summary
         self.summary(quiz_start, quiz_end)
 
     def ask(self, question):
         # log the start time
         question_start = datetime.datetime.now()
-        print('You started this question at {}'.format(question_start.strftime(self.time_format)))
+        print('You started this question at {}'.format(
+                question_start.strftime(self.time_format)))
         # capture the answer
         user_answer = input('Solve it: {} = '.format(question.text))
         # check the answer
@@ -49,7 +53,8 @@ class Quiz:
         self.user_answers.append(int(user_answer))
         # log the end time
         question_end = datetime.datetime.now()
-        print('You finished this question at {}\n'.format(question_end.strftime(self.time_format)))
+        print('You finished this question at {}\n'.format(
+                question_end.strftime(self.time_format)))
         # send back the elapsed time, too
         elapsed_time = question_end - question_start
         # if the answer is right, send back True
@@ -66,16 +71,20 @@ class Quiz:
         for index in range(len(self.questions)):
             if self.questions[index].answer == int(self.user_answers[index]):
                 righties += 1
-        print('Right answers ::: {}/{} !!!'.format(righties, len(self.questions)))
+        print('Right answers ::: {}/{} !!!'.format(
+                righties, len(self.questions)))
         # print the total time for the quiz
         total_seconds = (qe - qs).seconds
         quiz_time_minutes = total_seconds // 60
         quiz_time_seconds = total_seconds % 60
-        print('Total time for the quiz ::: {}:{} !!!\n'.format(quiz_time_minutes, quiz_time_seconds))
+        print('Total time for the quiz ::: {}:{} !!!\n'.format(
+                quiz_time_minutes, quiz_time_seconds))
 
     def show_questions(self):
         for question in self.questions:
-            print('({}) {} = {};'.format(self.questions.index(question) + 1, question.text, question.answer))
+            print('({}) {} = {};'.format(
+                    self.questions.index(question) + 1,
+                    question.text, question.answer))
 
 my_quiz = Quiz()
 # my_quiz.show_questions()
