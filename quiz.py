@@ -14,10 +14,16 @@ class Quiz:
         number_of_questions = int(input(
                 'How many questions you would like our quiz to contain? '
         ))
+        min = int(input(
+                'What number would be the minimal in our quiz? '
+        ))
+        max = int(input(
+                'What number would be the maximal in our quiz? '
+        ))
         for _ in range(number_of_questions):
             type = random.randrange(0, 2)
-            n1 = random.randint(1, 10)
-            n2 = random.randint(1, 10)
+            n1 = random.randint(min, max)
+            n2 = random.randint(min, max)
             # add these questions into self.questions
             if type == 0:
                 self.questions.append(Add(n1, n2))
