@@ -11,7 +11,10 @@ class Quiz:
 
     def __init__(self):
         # generate 10 random questions with numbers from 1 to 10
-        for _ in range(10):
+        number_of_questions = int(input(
+                'How many questions you would like our quiz to contain? '
+        ))
+        for _ in range(number_of_questions):
             type = random.randrange(0, 2)
             n1 = random.randint(1, 10)
             n2 = random.randint(1, 10)
@@ -35,7 +38,7 @@ class Quiz:
             result = self.ask(question)
             # log if they got the question right
             if result[0]:
-                print('You got this one right in {} seconds!!!\n'.format(
+                print('You got this one right in {} second(s)!!!\n'.format(
                         result[1].seconds)
                 )
 
