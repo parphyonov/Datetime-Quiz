@@ -21,13 +21,15 @@ class Quiz:
                 'What number would be the maximal in our quiz? '
         ))
         for _ in range(number_of_questions):
-            type = random.randrange(0, 2)
+            type = random.randrange(0, 3)
             n1 = random.randint(min, max)
             n2 = random.randint(min, max)
             # add these questions into self.questions
             if type == 0:
                 self.questions.append(Add(n1, n2))
             elif type == 1:
+                self.questions.append(Subtract(n1, n2))
+            elif type == 2:
                 self.questions.append(Multiply(n1, n2))
 
     def take_quiz(self):
