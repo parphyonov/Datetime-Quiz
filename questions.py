@@ -8,7 +8,7 @@ class Add(Question):
         self.answer = num1 + num2
 
 class Subtract(Question):
-    def __init(self, num1, num2):
+    def __init__(self, num1, num2):
         self.text = '{} - {}'.format(num1, num2)
         self.answer = num1 - num2
 

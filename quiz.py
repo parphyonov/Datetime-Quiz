@@ -1,7 +1,7 @@
 import datetime
 import random
 
-from questions import Add, Multiply
+from questions import Add, Subtract, Multiply
 
 class Quiz:
     questions = []
@@ -10,18 +10,25 @@ class Quiz:
     time_format = '%H:%M %p'
 
     def __init__(self):
-        # generate 10 random questions with numbers from 1 to 10
-        number_of_questions = int(input(
-                'How many questions you would like our quiz to contain? '
-        ))
-        min = int(input(
-                'What number would be the minimal in our quiz? '
-        ))
-        max = int(input(
-                'What number would be the maximal in our quiz? '
-        ))
+        # setup for generating 10 random questions with numbers from 1 to 10
+        number_of_questions = 10
+        min = 1
+        max = 10
+
+        setup = input('Would you like to use default quiz settings? (Y/n) ')
+        if setup.upper() == 'Y':
+            number_of_questions = int(input(
+                    'How many questions you would like our quiz to contain? '
+            ))
+            min = int(input(
+                    'What number would be the minimal in our quiz? '
+            ))
+            max = int(input(
+                    'What number would be the maximal in our quiz? '
+            ))
+
         for _ in range(number_of_questions):
-            type = random.randrange(0, 3)
+            type = random.randrange(3)
             n1 = random.randint(min, max)
             n2 = random.randint(min, max)
             # add these questions into self.questions
@@ -106,6 +113,10 @@ class Quiz:
         total_seconds = (qe - qs).seconds
         quiz_time_minutes = total_seconds // 60
         quiz_time_seconds = total_seconds % 60
+        if quiz_time_minutes < 10:
+            quiz_time_minutes = '0' + str(quiz_time_minutes)
+        if quiz_time_seconds < 10:
+            quiz_time_seconds = '0' + str(quiz_time_seconds)
         print('Total time for the quiz ::: {}:{} !!!\n'.format(
                 quiz_time_minutes, quiz_time_seconds
         ))
