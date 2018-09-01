@@ -11,10 +11,10 @@ class Quiz:
 
     def __init__(self):
         # generate 10 random questions with numbers from 1 to 10
-        for rn in range(0, 10):
+        for _ in range(10):
             type = random.randrange(0, 2)
-            n1 = random.randrange(1, 11)
-            n2 = random.randrange(1, 11)
+            n1 = random.randint(1, 10)
+            n2 = random.randint(1, 10)
             # add these questions into self.questions
             if type == 0:
                 self.questions.append(Add(n1, n2))
