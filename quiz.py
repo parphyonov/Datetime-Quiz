@@ -23,11 +23,13 @@ class Quiz:
 
     def take_quiz(self):
         print('=== THE QUIZ ===')
+
         # log the start time
         quiz_start = datetime.datetime.now()
         print('You started the quiz at {}\n'.format(
                 quiz_start.strftime(self.time_format)
         ))
+
         # ask all of the questions
         for question in self.questions:
             result = self.ask(question)
@@ -36,11 +38,13 @@ class Quiz:
                 print('You got this one right in {} seconds!!!\n'.format(
                         result[1].seconds)
                 )
+
         # log the end time
         quiz_end = datetime.datetime.now()
         print('The quiz finished at {}\n'.format(
                 quiz_end.strftime(self.time_format)
         ))
+
         # show a summary
         self.summary(quiz_start, quiz_end)
 
@@ -50,27 +54,34 @@ class Quiz:
         print('You started this question at {}'.format(
                 question_start.strftime(self.time_format)
         ))
+
         # capture the answer
         user_answer = input('Solve it: {} = '.format(question.text))
+
         # check the answer
         result = int(user_answer) == question.answer
         self.user_answers.append(int(user_answer))
+
         # log the end time
         question_end = datetime.datetime.now()
         print('You finished this question at {}\n'.format(
                 question_end.strftime(self.time_format)
         ))
+
         # send back the elapsed time, too
         elapsed_time = question_end - question_start
+
         # if the answer is right, send back True
         if result:
             return [True, elapsed_time]
+
         # otherwise, send back False
         else:
             return [False, elapsed_time]
 
     # 'qs' for 'quiz_start', 'qe' for 'quiz_end'
     def summary(self, qs, qe):
+
         # print how many you got right and the total # of questions. 5/10
         righties = 0
         for index in range(len(self.questions)):
@@ -79,6 +90,7 @@ class Quiz:
         print('Right answers ::: {}/{} !!!'.format(
                 righties, len(self.questions)
         ))
+
         # print the total time for the quiz
         total_seconds = (qe - qs).seconds
         quiz_time_minutes = total_seconds // 60
@@ -95,5 +107,4 @@ class Quiz:
             ))
 
 my_quiz = Quiz()
-# my_quiz.show_questions()
 my_quiz.take_quiz()
