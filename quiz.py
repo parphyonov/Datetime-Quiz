@@ -68,8 +68,10 @@ class Quiz:
                 righties += 1
         print('Right answers ::: {}/{} !!!'.format(righties, len(self.questions)))
         # print the total time for the quiz
-        quiz_time = (qe - qs).seconds
-        print('Total time for the quiz ::: {} !!!'.format(quiz_time))
+        total_seconds = (qe - qs).seconds
+        quiz_time_minutes = total_seconds // 60
+        quiz_time_seconds = total_seconds % 60
+        print('Total time for the quiz ::: {}:{} !!!\n'.format(quiz_time_minutes, quiz_time_seconds))
 
     def show_questions(self):
         for question in self.questions:
